@@ -36,7 +36,7 @@ class Agent(Coordinates):
         crossed_wall = None
         room = room_dict[self.room_ID]
         for wall in room.walls.wall_list:
-            if wall.has_crossed_border(self.x, self.y, new_x, new_y):
+            if wall.has_crossed(self.x, self.y, new_x, new_y):
                 do_move = False
                 crossed_wall = wall
                 break

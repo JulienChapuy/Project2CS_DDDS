@@ -8,6 +8,19 @@ Created on Wed Oct 13 23:04:10 2021
 from architecture.door import Door
 
 class Doors():
+    """A class that implements several doors
+
+    Attributes
+    ----------
+    door_list : list
+        a list of doors
+        
+    Methods
+    -------
+    plot()
+        Plots the doors as segments
+    """
+    
     def __init__(self, door_list=[]):
         self.door_list = door_list
         
@@ -18,18 +31,9 @@ class Doors():
         return s
     
     def plot(self):
+        """Plots the doors as segments"""
         for door in self.door_list:
             door.plot()
-            
-    def myadd(self, doors):
-        # print(doors)
-        # print(doors.door_list)
-        for door in doors.door_list:
-            # print('teest')
-            self.door_list.append(door)
-            
-    def get_door(self, i):
-        return self.door_list[i]
         
         
 if __name__ == '__main__':

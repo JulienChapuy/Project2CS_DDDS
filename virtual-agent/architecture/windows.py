@@ -9,6 +9,18 @@ Created on Wed Oct 13 23:13:12 2021
 from architecture.window import Window
 
 class Windows():
+    """A class that implements several windows
+
+    Attributes
+    ----------
+    window_list : list
+        a list of windows
+        
+    Methods
+    -------
+    plot()
+        Plots the windows as segments
+    """
     def __init__(self, window_list=[]):
         self.window_list = window_list
         
@@ -20,16 +32,13 @@ class Windows():
         return s
     
     def plot(self):
+        """Plots the windows as segments"""
         for window in self.window_list:
             window.plot()
         
-    def add(self, windows):
-        for window in windows.window_list:
-            self.window_list.append(window)
-        
 if __name__ == '__main__':
-    window1 = Window(1, 1, 2, 2, 0.5, 1.0)
-    window2 = Window(1, 2, 2, 1, 0.5, 1.0)
+    window1 = Window(1, 1, 2, 2)
+    window2 = Window(3, 2, 2, 4)
     windows = Windows([window1, window2])
     windows.plot()
     print(windows)

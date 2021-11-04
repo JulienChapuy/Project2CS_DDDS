@@ -13,35 +13,33 @@ from room import Room
 
 
 class Floor():
-    def __init__(self, rooms):
-        self.rooms = rooms
+    """A class that implements a floor (of a buidling) composed of rooms
+
+    Attributes
+    ----------
+    rooms_list : list
+        the list of rooms of the floor
+        
+    Methods
+    -------
+    plot()
+        Plots the rooms
+    """
+    
+    def __init__(self, room_list):
+        self.room_list = room_list
     
     def __str__(self):
         s = ''
-        for i, room in enumerate(self.rooms):
+        for i, room in enumerate(self.room_list):
             s = s + 'room ' + i + ': ' + str(room) + '\n'
         return s
     
     def plot(self):
-        for room in self.rooms:
+        """Plots the rooms"""
+        for room in self.room_list:
             room.plot()
             
             
-            
 if __name__ == '__main__':
-    wg = WallsGenerator()
-    
-    # room 1
-    walls1 = wg.generate([(0, 0), (0, 4), (4, 6), (6, 4)])
-    room1 = Room(walls1)
-        
-    # room 2
-    walls2 =wg.generate([(7, 5), (10, 5), (10, 8), (7, 8)])
-    room2 = Room(walls2)
-
-    
-    # plots
-    plt.figure(figsize=(8, 8))
-    room1.plot()
-    room2.plot()
-    plt.show() 
+    pass

@@ -28,16 +28,6 @@ class Agents():
             dx = np.random.random() - np.random.random() 
             dy = np.random.random() - np.random.random() 
             p.move(dx / 4, dy / 4, rooms_dict)
-
-        
-    def sleep(self):
-        pass
-    
-    def eat(self):
-        pass
-    
-    def drink(self):
-        pass
     
     def get_coordinates(self):
         X = np.zeros((len(self.agents_list)))
@@ -46,22 +36,6 @@ class Agents():
             X[i] = agent.x
             Y[i] = agent.y
         return X, Y
-
-    # def plot(self, title):
-    #     # create a figure on which points are updated
-    #     for p in agents_list:
-    #         p.plot()
-    #     plt.title(title)
-    #     plt.show()
-    
-    def plot(self, title):
-        # create a figure on which points are updated
-        for p in agents_list:
-            p.plot()
-        plt.title(title)
-        plt.show()
-
-
 
 
 if __name__ == '__main__':
