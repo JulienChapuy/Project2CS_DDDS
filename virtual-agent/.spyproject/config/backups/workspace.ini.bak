@@ -1,0 +1,12 @@
+[workspace]
+restore_data_on_startup = True
+save_data_on_exit = True
+save_history = True
+save_non_project_files = False
+project_type = 'empty-project-type'
+recent_files = ['architecture\\coordinates.py', 'architecture\\window.py', 'architecture\\windows.py', 'architecture\\door.py', 'architecture\\doors.py', 'architecture\\wall.py', 'architecture\\walls.py', 'utils\\tools.py', 'virtual-twin\\person.py', 'virtual-twin\\people.py', 'architecture\\room.py', 'architecture\\floor.py']
+
+[main]
+version = 0.2.0
+recent_files = ['architecture\\coordinates.py', 'architecture\\door.py', 'architecture\\doors.py', 'architecture\\wall.py', 'architecture\\walls.py', 'utils\\tools.py', 'architecture\\room.py']
+
