@@ -17,16 +17,52 @@ from architecture.room import Room
 
 
 class Agents():
+    """A class that implements an several agents
+
+    Attributes
+    ----------
+    agent_list : list
+        a list of agents
+
+    Methods
+    -------
+    move(room_dict=None)
+        move the agents 
+    
+    get_coordinates()
+        get the coordinates of the agents
+        
+    """
+    
     def __init__(self, agents_list):
         self.agents_list = agents_list        
         
     def move(self, rooms_dict=None):
+        """Move the agents
+        
+        For the moment, the agents move randomly
+        
+        Parameters
+        ----------
+        room_dict : dict {int: Room}
+            the dictionnary of rooms
+            serves to get the room in which the agents are with their room_ID
+        """
         for p in self.agents_list:
             dx = np.random.random() - np.random.random() 
             dy = np.random.random() - np.random.random() 
             p.move(dx / 4, dy / 4, rooms_dict)
     
     def get_coordinates(self):
+        """Get the x and y coordinates of the agents as numpy arrays
+        
+        Returns
+        -------
+        X : numpy array
+            the x coordinates of the agents 
+        Y : numpy array
+            the y coordinates of the agents
+        """
         X = np.zeros((len(self.agents_list)))
         Y = np.zeros((len(self.agents_list)))
         for i, agent in enumerate(self.agents_list):
