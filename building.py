@@ -25,6 +25,8 @@ class Building():
         
     Methods
     -------
+    add_floor()
+        add a floor in the building
     plot()
         Plot the floor
     """

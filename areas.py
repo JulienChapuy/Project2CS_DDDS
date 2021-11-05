@@ -6,6 +6,18 @@ Created on Thu Oct 14 12:03:51 2021
 """
 
 class Area():
+    """A class that implements a general Area class
+
+    Attributes
+    ----------
+    walls: list
+        a list of walls that describe the Area
+        
+    Methods
+    -------
+    plot()
+        Plot the Area
+    """
     def __init__(self, walls):
         self.walls = walls
         
@@ -14,6 +26,23 @@ class Area():
             w.plot()
     
 class Room(Area):
+    """A class that implements a room class from Area
+
+    Attributes
+    ----------
+    walls: list
+        a list of walls in the room
+    doors: list
+        a list of doors in the room
+    windows: list
+        a list of windows in the room
+        
+    Methods
+    -------
+    plot()
+        Plot the room
+    """
+    
     def __init__(self, walls):
         super().__init__(walls)
         self.doors = []
