@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+# %matplotlib qt
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -36,7 +37,7 @@ class Agents():
 
 if __name__ == '__main__':
     # initialize figure
-    fig = plt.figure()
+    fig = plt.figure(figsize=(6, 6))
     ax = fig.add_subplot(111)
     ax.set_xlim([-1, 6])
     ax.set_ylim([-1, 11])
@@ -54,9 +55,7 @@ if __name__ == '__main__':
                     Wall(0, 0, 5, 0),
                     Wall(5, 0, 5, 5)])
     
-    room0 = Room(walls0)
-    print(room0)
-    
+    room0 = Room(walls0)    
     room_dict = {0:room0}
     
     # plot building
