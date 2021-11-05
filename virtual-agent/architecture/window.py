@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:03:01 2021
-
-@author: Lloyd
-"""
 
 from architecture.coordinates import CoordinatesPair
 

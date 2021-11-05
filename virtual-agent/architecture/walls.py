@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 13 23:19:51 2021
 
-@author: Lloyd
-"""
 
 from architecture.wall import Wall
 

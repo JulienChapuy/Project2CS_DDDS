@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:02:08 2021
 
-@author: Lloyd
-"""
-    
 from architecture.coordinates import CoordinatesPair      
         
 class Door(CoordinatesPair):

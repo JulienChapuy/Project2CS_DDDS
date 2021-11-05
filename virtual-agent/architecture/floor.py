@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:04:08 2021
 
-@author: Lloyd
-"""
 import matplotlib.pyplot as plt
 
 from coordinates import Coordinates

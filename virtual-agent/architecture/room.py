@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:03:21 2021
 
-@author: Lloyd
-"""
 import matplotlib.pyplot as plt
 
 from architecture.coordinates import Coordinates

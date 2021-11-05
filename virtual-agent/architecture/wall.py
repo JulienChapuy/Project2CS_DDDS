@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:01:26 2021
 
-@author: Lloyd
-"""
 from architecture.coordinates import CoordinatesPair
 from architecture.doors import Doors
 from architecture.windows import Windows

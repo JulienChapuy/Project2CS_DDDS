@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 13 23:04:10 2021
-
-@author: Lloyd
-"""
 
 from architecture.door import Door
 

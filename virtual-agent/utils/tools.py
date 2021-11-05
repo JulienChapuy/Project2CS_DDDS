@@ -3,6 +3,18 @@
 """
 This scripts implements tools for checking if two segments (not lines)
 intersect with each other.
+
+Functions:
+---------
+line_equation(x1, y1, x2, y2)
+    Returns the parameters of the line equation 
+    passing through the point (x1, y1) and (x2, y2)
+    
+find_intersection(A, B, C, D)
+    Returns the intersection of lines (AB) and (CD)
+    
+intersects_segment(A, B, X)
+    Checks if point X is included in the segment [AB]
 """
 
 import numpy as np

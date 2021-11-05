@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:05:05 2021
-
-@author: Lloyd
-"""
 
 class Building():
     """A class that implements a building composed of floors
