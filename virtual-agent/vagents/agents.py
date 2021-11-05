@@ -102,12 +102,12 @@ if __name__ == '__main__':
         ax.plot([door.x1, door.x2], [door.y1, door.y2], color='white')
     
     # initialize parameters
-    it = 500
-    N = 100
+    N_iterations = 500
+    N_agents = 100
     n_clusters = 4
     
     # initialize objects (agents, kmeans)
-    agents_list = [Agent(3, 3, room_ID=0) for i in range(N)]
+    agents_list = [Agent(3, 3, room_ID=0) for i in range(N_agents)]
     agents = Agents(agents_list)
     agents.move(room_dict)
     X, Y = agents.get_coordinates()
@@ -121,10 +121,10 @@ if __name__ == '__main__':
                        linestyle='', marker='o', markersize=15)
     coordinates = []
     for k in range(n_clusters):
-        coord, = ax.plot(X, Y, linestyle='', marker='o', markersize=2)
+        coord, = ax.plot(X, Y, linestyle='', marker='o', markersize=3)
         coordinates.append(coord)
 
-    for i in range(it):
+    for i in range(N_iterations):
         # time.sleep(0.02)
         
         # move and get coordinates of agents
@@ -149,7 +149,7 @@ if __name__ == '__main__':
             coord.set_ydata(Y[np.where(pred == j)])
 
         # update canvas
-        ax.set_title('iter nb {}'.format(i))
+        ax.set_title('iteration number {}'.format(i))
         fig.canvas.draw()
         fig.canvas.flush_events()
         
