@@ -5,7 +5,7 @@ Please copy the content of this form to your own repository and tick ([X]) the b
 
 [X] I use git to store (only) the source code of my project.
 
-[ ] I configured the git `.ignore` file.
+[X] I configured the git `.ignore` file.
 
 [X] I made a commit per atomic change to the file of the project. Example: 4887df85abb41d01224521d45cdf128981421e5d
 
