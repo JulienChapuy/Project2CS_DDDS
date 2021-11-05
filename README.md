@@ -96,8 +96,16 @@ A draft of file that should be explored to plot 3D view of the building
 # Running the project
 ## Virtual agents simulation
 
-To simulate agents moving around (randomly as of now), the script to run is agents.py.
-If a separate window doesn't appear in which to visualize the moving agents,  type <code>%matplotlib qt</code> in the console and rerun the script.
+To simulate agents moving around (randomly as of now), do the following:
+
+- open the command line that supports the command <code>ipython</code> 
+- run <code>cd project_folder/virtual_agent</code> 
+- run <code>ipython</code>
+- run <code>%matplotlib qt</code>
+- run <code>import main</code>
+- run <code>main.run()</code>
+
+A seperate window should appear with an animation.
 
 ## Wall generation 
 
