@@ -8,6 +8,11 @@ from elements import Wall, Window, Door
 from areas import Room
 import numpy as np 
 
+#We will define below multiple generators of areas / floors, etc.
+#We detailled more the function generate_rooms_3doors since it is the one 
+#we used in the main file.
+
+#generate a list of walls, randomly created (can contains elements)
 def generate_random(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     
     
@@ -70,6 +75,8 @@ def generate_random(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
         
     return(walls)
 
+#generate a random_wall
+
 def random_wall(x_0, y_0, x_1, y_1, material):
     rng = np.random.rand()
     a,b = 0,0
@@ -94,7 +101,8 @@ def random_wall(x_0, y_0, x_1, y_1, material):
         w = Wall((x_0, y_0), (x_1,y_1), material,[door])
         
     return(w)
-        
+    
+#generate a wall that can't contain a door (e.g. for walls on the boundaries of the floor)    
 def doorless_wall(x_0, y_0, x_1, y_1, material):
     rng = np.random.rand()
     a,b = 0,0
@@ -116,6 +124,7 @@ def doorless_wall(x_0, y_0, x_1, y_1, material):
         
     return(w)
 
+#generate a wall that automatically contains a door
 def door_wall(x_0, y_0, x_1, y_1, material):
     a,b = 0,0
     
@@ -131,6 +140,7 @@ def door_wall(x_0, y_0, x_1, y_1, material):
         
     return(w)
 
+#generate a list of rooms with random walls
 def generate_random_rooms(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     a_length = f_length / n_x
     a_width = f_width/ n_y
@@ -157,7 +167,8 @@ def generate_random_rooms(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     
     return(rooms)
 
-
+#generate rooms in a intelligent way : no doors on the boundaries,
+#and at least one door by area.
 def generate_rooms_individually(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     a_length = f_length / n_x
     a_width = f_width/ n_y
@@ -354,6 +365,8 @@ def generate_rooms_individually(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     
     return(rooms)
 
+#same function than above but also returns the list of walls 
+#in addition to the list of areas
 
 def generate_rooms(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     a_length = f_length / n_x
@@ -551,6 +564,8 @@ def generate_rooms(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     
     return(rooms, walls)
 
+#generate a floor using the function above
+
 def generate_floor(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
     rooms, walls = generate_rooms(f_length, f_width, n_x, n_y)
     
@@ -579,6 +594,8 @@ def generate_floor(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
                 
     return(walls_tmp)
     
+#generate a path between a room n°n and room n°m
+
 def path(n,m):
     
     reached = np.zeros((n,m)).astype('int')
@@ -719,7 +736,38 @@ def path(n,m):
         y_0 = y
     return(reached, doors)
 
+#generate rooms that contain at least 2 doors if they are on the boundaries 
+#and 3 doors otherwise
+
+#we decided to use this generator since with this configuration 
+#we are sure that any room is reached with a construction algorithm that is 
+# is easy and time efficient
+
 def generate_rooms_3doors(f_length = 20, f_width = 15, n_x = 3, n_y = 2):
+    """A function that generates a floor with:
+        -at least 3 doors in the areas in the interior
+        -at least 2 doors in the areas on the boundary
+
+    Attributes
+    ----------
+    f_length: numeric
+        length of a floor
+    f_width: numeric
+        width of a floor
+    n_x: numeric
+        number of rooms along the length dimension
+    n_y: numeric
+        number of rooms along the width dimension
+        
+    Returns
+    -------
+    areas: list
+        a list of the areas in the floor
+        
+    walls: list
+        a list of the walls in the floor
+        
+    """
     a_length = f_length / n_x
     a_width = f_width/ n_y
     
