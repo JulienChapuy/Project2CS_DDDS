@@ -9,6 +9,21 @@ from architecture.room import Room
 from utils.tools import find_intersection, intersects_segment 
 
 class Agent(Coordinates):
+    """A class that implements coordinates in 2D space
+
+    Attributes
+    ----------
+    x : float
+        the value of the x axis
+    y : float
+        the value of the y axis
+
+
+    Methods
+    -------
+    plot(color='black')
+        Plots the coordinates as a point.
+    """
     def __init__(self, x, y, ID=None, room_ID=None):
         super().__init__(x, y)
         self.x = x
@@ -16,8 +31,6 @@ class Agent(Coordinates):
         self.trajectory = [[x, y]]
         self.ID = ID
         self.room_ID = room_ID
-        self.thirsty = False
-        self.hungry = False
         
     def move(self, dx, dy, room_dict=None):
         # get the room
@@ -52,21 +65,11 @@ class Agent(Coordinates):
                 if segment_intersected:
                     do_move = True
                 
+        # update coordinates if appropriate
         if do_move == True: 
-            # update coordinates
             self.x = new_x
             self.y = new_y
             self.trajectory.append([self.x, self.y])
-            
-        
-    def sleep(self):
-        pass
-    
-    def eat(self):
-        pass
-    
-    def drink(self):
-        pass
     
     def plot(self, show_trajectory=False):
         super().plot()
