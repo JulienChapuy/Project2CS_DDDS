@@ -81,7 +81,7 @@ N.B. : In the following we decided to keep the generator that creates at least 3
 
 ### main.py
 
-A file that you can launch from command line with the following syntax: 'python main.py b_length b_width b_height n_x n_y n_levels'.
+A file that you can launch from command line with the following syntax: <code>python main.py b_length b_width b_height n_x n_y n_levels</code>
 - b_length: length of a building
 - b_width: width of a building
 - b_height: height of a building
@@ -101,7 +101,7 @@ If a separate window doesn't appear in which to visualize the moving agents,  ty
 
 ## Wall generation 
 
-To generate walls launch the main.py file with command line with the folowing syntax 'python main.py b_length b_width b_height n_x n_y n_levels'.
+To generate walls launch the main.py file with command line with the folowing syntax <code>python main.py b_length b_width b_height n_x n_y n_levels</code>
 - b_length: length of a building
 - b_width: width of a building
 - b_height: height of a building
@@ -109,6 +109,6 @@ To generate walls launch the main.py file with command line with the folowing sy
 - n_y: number of rooms along the width axis
 - n_leves: number of levels in the building
 
-e.g. python main.py 30 40 15 10 20 6
+e.g. <code>python main.py 30 40 15 10 20 6</code>
 
 
