@@ -124,14 +124,24 @@ if __name__ == '__main__':
     kmeans = KMeans(n_clusters=n_clusters)
     kmeans.fit(C)
 
-    # get cluster centers and agents coordinates
+    # get cluster centers
     centers_ = kmeans.cluster_centers_
-    centers, = ax.plot(centers_[:,0], centers_[:,1], 
-                       linestyle='', marker='o', markersize=15)
+
+    # plot cluster centers and agents
+    colors = {0:'blue',
+              1:'red',
+              2:'green',
+              3:'orange'}
     coordinates = []
+    centers_toplot = []
     for k in range(n_clusters):
-        coord, = ax.plot(X, Y, linestyle='', marker='o', markersize=3)
+        coord, = ax.plot(X, Y, linestyle='', marker='o', 
+                         markersize=3, c=colors[k])
         coordinates.append(coord)
+        centers, = ax.plot(centers_[k,0], centers_[k,1], 
+                       linestyle='', marker='o', 
+                       markersize=15, c=colors[k])
+        centers_toplot.append(centers,)
 
     for i in range(N_iterations):
         # time.sleep(0.02)
@@ -151,8 +161,9 @@ if __name__ == '__main__':
         centers_ = kmeans.cluster_centers_
         
         # set cluster centers and coordinates
-        centers.set_xdata(centers_[:,0])
-        centers.set_ydata(centers_[:,1])        
+        for k, ctp in enumerate(centers_toplot):
+            ctp.set_xdata(centers_[k,0])
+            ctp.set_ydata(centers_[k,1])        
         for j, coord in enumerate(coordinates):
             coord.set_xdata(X[np.where(pred == j)])
             coord.set_ydata(Y[np.where(pred == j)])
