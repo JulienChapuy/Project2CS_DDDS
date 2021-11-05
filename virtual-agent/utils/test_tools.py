@@ -4,7 +4,7 @@ import unittest
 from architecture.coordinates import Coordinates
 from utils.tools import line_equation, find_intersection, intersects_segment
 
-class TestStringMethods(unittest.TestCase):
+class TestTools(unittest.TestCase):
 
     def test_line_equation(self):
         x1 = -1

@@ -53,42 +53,44 @@ class Agent(Coordinates):
             serves to get the room in which the agent is with room_ID
         """
         
-        # get the room
-        room = room_dict[self.room_ID]
-        
         # define new coordinates
+        do_move = True
+        
         new_x = self.x + dx
         new_y = self.y + dy
         
-        # check if the agent has crossed a wall
-        do_move = True
-        crossed_wall = None
-        room = room_dict[self.room_ID]
-        for wall in room.walls.wall_list:
-            if wall.has_crossed(self.x, self.y, new_x, new_y):
-                do_move = False
-                crossed_wall = wall
-                break
+        if room_dict:
+            # get the room
+            room = room_dict[self.room_ID]
+
+            # check if the agent has crossed a wall
+            crossed_wall = None
+            room = room_dict[self.room_ID]
+            for wall in room.walls.wall_list:
+                if wall.has_crossed(self.x, self.y, new_x, new_y):
+                    do_move = False
+                    crossed_wall = wall
+                    break
+            
+            # if the agent has crossed a wall, check if it was a door
+            if do_move == False:
+                for door in crossed_wall.doors.door_list:
+                    
+                    # door coordinates
+                    A = Coordinates(door.x1, door.y1)
+                    B = Coordinates(door.x2, door.y2)
+                    
+                    #agent coordinates
+                    C = Coordinates(self.x, self.y)
+                    D = Coordinates(new_x, new_y)
+                    
+                    intersection = find_intersection(A, B, C, D)
+                    segment_intersected = intersects_segment(A, B, intersection)
+                    
+                    if segment_intersected:
+                        do_move = True
+                        self.room_ID = 1 - self.room_ID # temporary solution, only works for 2 rooms with ID 0 and 1
         
-        # if the agent has crossed a wall, check if it was a door
-        if do_move == False:
-            for door in crossed_wall.doors.door_list:
-                
-                # door coordinates
-                A = Coordinates(door.x1, door.y1)
-                B = Coordinates(door.x2, door.y2)
-                
-                #agent coordinates
-                C = Coordinates(self.x, self.y)
-                D = Coordinates(new_x, new_y)
-                
-                intersection = find_intersection(A, B, C, D)
-                segment_intersected = intersects_segment(A, B, intersection)
-                
-                if segment_intersected:
-                    do_move = True
-                    self.room_ID = 1 - self.room_ID # temporary solution, only works for 2 rooms with ID 0 and 1
-    
                 
         # update coordinates if appropriate
         if do_move == True: 
