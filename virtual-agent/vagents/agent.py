@@ -9,20 +9,27 @@ from architecture.room import Room
 from utils.tools import find_intersection, intersects_segment 
 
 class Agent(Coordinates):
-    """A class that implements coordinates in 2D space
+    """A class that implements an agent moving in 2D space
 
     Attributes
     ----------
     x : float
-        the value of the x axis
+        the x value of the agent's position
     y : float
-        the value of the y axis
+        the y value of the agent's position
+    ID : int
+        the identifier of the agent
+    room_ID : int
+        the ID of the room in which the agent is
 
 
     Methods
     -------
-    plot(color='black')
-        Plots the coordinates as a point.
+    move(dx, dy, room_dict=None)
+        move the agent from (x, y) to (x + dx, y + dy)
+    
+    plot(show_trajectory=False)
+        Plots the coordinates as a point
     """
     def __init__(self, x, y, ID=None, room_ID=None):
         super().__init__(x, y)
@@ -33,6 +40,19 @@ class Agent(Coordinates):
         self.room_ID = room_ID
         
     def move(self, dx, dy, room_dict=None):
+        """move the agent from (x, y) to (x + dx, y + dy)
+        
+        Parameters
+        ----------
+        dx : float
+            the x axis movement
+        dy : float
+            the y axis movement
+        room_dict : dict {int: Room}
+            the dictionnary of rooms
+            serves to get the room in which the agent is with room_ID
+        """
+        
         # get the room
         room = room_dict[self.room_ID]
         
@@ -40,7 +60,7 @@ class Agent(Coordinates):
         new_x = self.x + dx
         new_y = self.y + dy
         
-        # check if it has crossed a wall
+        # check if the agent has crossed a wall
         do_move = True
         crossed_wall = None
         room = room_dict[self.room_ID]
@@ -50,12 +70,15 @@ class Agent(Coordinates):
                 crossed_wall = wall
                 break
         
-        # if it has crossed a wall, check if it was a door
+        # if the agent has crossed a wall, check if it was a door
         if do_move == False:
             for door in crossed_wall.doors.door_list:
                 
+                # door coordinates
                 A = Coordinates(door.x1, door.y1)
                 B = Coordinates(door.x2, door.y2)
+                
+                #agent coordinates
                 C = Coordinates(self.x, self.y)
                 D = Coordinates(new_x, new_y)
                 
@@ -72,6 +95,13 @@ class Agent(Coordinates):
             self.trajectory.append([self.x, self.y])
     
     def plot(self, show_trajectory=False):
+        """Plots the agent as a point.
+        
+        Parameters
+        ----------
+        show_trajectory : bool
+            plot the trajectory of the agent (the path it walked)
+        """
         super().plot()
         if show_trajectory:
             trajectory = np.array(self.trajectory)
