@@ -87,13 +87,15 @@ class Agent(Coordinates):
                 
                 if segment_intersected:
                     do_move = True
+                    self.room_ID = 1 - self.room_ID # temporary solution, only works for 2 rooms with ID 0 and 1
+    
                 
         # update coordinates if appropriate
         if do_move == True: 
             self.x = new_x
             self.y = new_y
             self.trajectory.append([self.x, self.y])
-    
+            
     def plot(self, show_trajectory=False):
         """Plots the agent as a point.
         

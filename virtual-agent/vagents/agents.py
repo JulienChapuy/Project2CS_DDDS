@@ -91,11 +91,20 @@ if __name__ == '__main__':
                     Wall(0, 0, 5, 0),
                     Wall(5, 0, 5, 5)])
     
-    room0 = Room(walls0)    
-    room_dict = {0:room0}
+    walls1 = Walls([shared_wall,
+                    Wall(5, 5, 5, 8),
+                    Wall(5, 8, 0, 5)])
+    
+    room0 = Room(walls0)
+    room1 = Room(walls1)    
+    room_dict = {0:room0,
+                 1:room1}
     
     # plot building
     for wall in walls0.wall_list:
+        ax.plot([wall.x1, wall.x2], [wall.y1, wall.y2], color='black')
+        
+    for wall in walls1.wall_list:
         ax.plot([wall.x1, wall.x2], [wall.y1, wall.y2], color='black')
         
     for door in doors.door_list:
